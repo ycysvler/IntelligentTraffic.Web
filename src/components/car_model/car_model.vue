@@ -61,14 +61,14 @@
           <div class="startTime">
             <Col span="12" />
               <span>起始时间</span>
-              <DatePicker class="start" type="date" placeholder="日期" style="width: 200px"   v-model="startDate"></DatePicker>
-              <TimePicker confirm placeholder="时,分,秒" style="width: 88px" v-model="startTime"  @on-change="startALL"></TimePicker>
+              <DatePicker class="start" type="date" placeholder="日期" style="width: 200px"   v-model="startDate" @on-change="startALL"></DatePicker>
+              <TimePicker confirm placeholder="时,分,秒" style="width: 88px" v-model="startTime"  ></TimePicker>
           </div>
           <div class="endTime">
             <Col span="12" />
             <span>终止时间</span>
-            <DatePicker class="end" type="date" placeholder="日期" style="width: 200px" v-model="endDate"></DatePicker>
-            <TimePicker confirm placeholder="时,分,秒" style="width: 88px" v-model="endTime" @on-change="endALL"></TimePicker>
+            <DatePicker class="end" type="date" placeholder="日期" style="width: 200px" v-model="endDate" @on-change="endALL"></DatePicker>
+            <TimePicker confirm placeholder="时,分,秒" style="width: 88px" v-model="endTime"></TimePicker>
           </div>
         </Row>
       </div>
@@ -93,10 +93,10 @@
         disabledInput: false,
         chepai:'',
         startDate:'',
-        startTime:'',
+        startTime:'00:00:00',
         start:'',
         endDate:'',
-        endTime:'',
+        endTime:'00:00:00',
         end:'',
         onetime:'',
         twotime:'',
@@ -143,6 +143,7 @@
       startALL(){
         let date = moment(this.startDate).format("YYYY-MM-DD");
         this.start = date +' '+ this.startTime;
+        console.log(this.startTime)
       },
       endALL(){
         let date = moment(this.endDate).format("YYYY-MM-DD");
