@@ -39,7 +39,7 @@
       </div>
       <Button class="carlicenceBtn" type="primary"  @click="getModelSearch" >搜索</Button>
     </div>
-    <search_model :items = 'search.data' :total="search.total"  @hideshow="change" :showLicenceSearch = 'showLicenceSearch'></search_model>
+    <search_model :items = 'search.data' :total="search.total"  @hideshow="change" :showModelSearch = 'showModelSearch'></search_model>
   </div>
 </template>
 
@@ -60,7 +60,7 @@
         end:'',
         onetime:'',
         twotime:'',
-        showLicenceSearch:false,
+        showModelSearch:false,
         selectKakouID:[]
       }
     },
@@ -84,16 +84,16 @@
     },
     methods:{
       change(){
-        this.showLicenceSearch = false;
+        this.showModelSearch = false;
       },
       getModelSearch(){
         if(this.onetime === '' && this.twotime === ''){
           this.$Message.error('请选择时间');
-          this.showLicenceSearch = false;
+          this.showModelSearch = false;
         }
         if(this.twotime < this.onetime){
           this.$Message.error('选择时间有误，查询结果失败');
-          this.showLicenceSearch = false;
+          this.showModelSearch = false;
         }
         if(this.start != '' && this.end !=''){
           this.showModelSearch = true;

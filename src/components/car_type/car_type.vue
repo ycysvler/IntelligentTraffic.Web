@@ -65,7 +65,7 @@
       </div>
       <Button class="carTypeBtn" type="primary"  @click="getModelSearch">搜索</Button>
     </div>
-    <search_model :items = 'search.data' :total="search.total" :showTypeSearch = 'showTypeSearch'  @hideshow="change"></search_model>
+    <search_model :items = 'search.data' :total="search.total" :showModelSearch = 'showModelSearch'  @hideshow="change"></search_model>
   </div>
 </template>
 
@@ -90,7 +90,7 @@
         twotime:'',
         Typevalue: '',
         brandValue:'',
-        showTypeSearch:false,
+        showModelSearch:false,
         selectKakouID:[]
       }
     },
@@ -126,11 +126,11 @@
       getModelSearch(){
         if(this.onetime === '' && this.twotime === ''){
           this.$Message.error('请选择时间');
-          this.showTypeSearch = false;
+          this.showModelSearch = false;
         }
         if(this.twotime < this.onetime){
           this.$Message.error('选择时间有误，查询结果失败');
-          this.showTypeSearch = false;
+          this.showModelSearch = false;
         }
         if(this.start != '' && this.end !=''){
           this.showModelSearch = true;
