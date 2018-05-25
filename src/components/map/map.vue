@@ -1,7 +1,6 @@
 <template>
   <div class="map-wrapper">
     <div id="allmap" style="overflow:hidden;zoom:1;position:relative;" ></div>
-
   </div>
 </template>
 
@@ -11,7 +10,7 @@
   export default {
     // 这是声明v-model
     data(){
-      return{}
+      return{ }
     },
     // 已实例化本组件（dom未创建完成）
     created(){
@@ -30,14 +29,9 @@
       "$store.getters.getMaps":function (val, oldVal) {
         this.drawMarker(val);
         return val
-      }
+      },
     },
-
-
     methods: {
-
-
-
       drawMarker(kakous){
         window.marks = [];
         for (var i = 0; i < kakous.length; i++) {
@@ -60,7 +54,6 @@
         map.centerAndZoom(new BMap.Point(116.417854, 39.921988), 13);
         map.setCurrentCity("北京");
         map.enableScrollWheelZoom(true);
-
 
         var overlays = [];
         var overlaycomplete = function (e) {
@@ -95,7 +88,6 @@
               let mark =  window.marks[i];
               console.log(mark);
               let result = BMapLib.GeoUtils.isPointInCircle(mark.point,circle);
-              console.log("circle",circle);
               if(result === true){
                 ALLmapPiont.push(mark.kakouid);
                 mapPiont = [...new Set(ALLmapPiont)]; //去重之后的数组
@@ -135,7 +127,37 @@
           }
           overlays.length = 0
         };
+        window.trajectory = function (kakous) {
+          var allpoint = [];
+          var target = [];
 
+          for(var i = 0; i < kakous.length; i++){
+            var kakou = kakous[i];
+            var point = new BMap.Point(kakou.lng,kakou.lat);
+            allpoint.push(point)
+          }
+          for(var i = 1; i < allpoint.length; i++) {
+            var fromkakou = allpoint[i - 1];
+            var tokakou = allpoint[i]
+            target.push({
+              "from": fromkakou,
+              "to": tokakou
+            });
+          }
+          var driving = new BMap.DrivingRoute(window.bdmap); //创建驾车实例
+          for(var i = 0; i < target.length; i++) {
+            driving.search(target[i].from,target[i].to); //第一个驾车搜索
+          }
+          driving.setSearchCompleteCallback(function() {
+            var pts = driving.getResults().getPlan(0).getRoute(0).getPath(); //通过驾车实例，获得一系列点的数组
+            var polyline = new BMap.Polyline(pts, {strokeColor:"red", strokeWeight:7, strokeOpacity:1});
+            window.bdmap.addOverlay(polyline);
+            setTimeout(function() {
+              window.bdmap.setViewport(allpoint);
+              //调整到最佳视野
+            }, 1000);
+          });
+        };
         // 请求卡口数据
         this.$store.dispatch('getKakous');
       }

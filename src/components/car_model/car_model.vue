@@ -98,6 +98,8 @@
         endDate:'',
         endTime:'',
         end:'',
+        onetime:'',
+        twotime:'',
         brandValue: '',
         modelValue:'',
         yearValue:'',
@@ -117,6 +119,7 @@
         return this.$store.getters.getYears
       },
       search(){
+
         return this.$store.getters.getSearch
       },
     },
@@ -124,7 +127,13 @@
       "$store.getters.getSelectMaps":function (val, oldVal) {
         this.selectKakouID = val;
         console.log("selectKakouID",this.selectKakouID)
-      }
+      },
+      end:function(val, oldVal){
+        this.twotime = val
+      },
+      start:function(val, oldVal){
+        this.onetime = val
+      },
     },
     //页面开始从vuex里action中的axios获取数据
     created(){
@@ -150,6 +159,18 @@
       },
 
       getModelSearch(){
+        if(this.onetime === '' && this.twotime === ''){
+          this.$Message.error('请选择时间');
+          this.showModelSearch = false;
+
+        }
+        if(this.twotime < this.onetime){
+          this.$Message.error('选择时间有误,查询结果失败');
+          this.showModelSearch = false;
+        }
+        if(this.start != '' && this.end !=''){
+          this.showModelSearch = true;
+        }
         this.$store.dispatch('getSearch',{
           kakouid:this.selectKakouID,//选中的卡口ID
           plateNum:this.chepai,   //车牌
@@ -160,9 +181,6 @@
           end:this.end,           //终止时间
           pagesize:8,             //分页 -> 一页几条
           current:1});            //分页 -> 当前页
-        if(this.start && this.end){
-          this.showModelSearch = true;
-        }
       },
       //控制input，disabled
       plateClick(){

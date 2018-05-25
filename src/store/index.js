@@ -5,6 +5,7 @@ import vehicle from './modules/vehicle'
 import search from './modules/search'
 import map from  './modules/map'
 import photo from  './modules/photo'
+import deck from './modules/deck'
 Vue.use(Vuex);
 
 const debug = process.env.NODE_ENV !== 'production';
@@ -14,7 +15,8 @@ export default new Vuex.Store({
     vehicle,
     search,
     map,
-    photo
+    photo,
+    deck
   },
   strict: debug,
   plugins: debug? [createLogger()] : []

@@ -39,7 +39,7 @@
       </div>
       <Button class="carlicenceBtn" type="primary"  @click="getModelSearch" >搜索</Button>
     </div>
-    <search_model :items = 'search.data' :total="search.total"  @hideshow="change" :showModelSearch = 'showModelSearch'></search_model>
+    <search_model :items = 'search.data' :total="search.total"  @hideshow="change" :showLicenceSearch = 'showLicenceSearch'></search_model>
   </div>
 </template>
 
@@ -58,12 +58,15 @@
         endDate:'',
         endTime:'',
         end:'',
-        showModelSearch:false,
+        onetime:'',
+        twotime:'',
+        showLicenceSearch:false,
         selectKakouID:[]
       }
     },
     computed:{
       search(){
+
         return this.$store.getters.getSearch
       }
     },
@@ -71,13 +74,30 @@
       "$store.getters.getSelectMaps":function (val, oldVal) {
         this.selectKakouID = val;
         console.log("selectKakouID",this.selectKakouID)
-      }
+      },
+      end:function(val, oldVal){
+        this.twotime = val
+      },
+      start:function(val, oldVal){
+        this.onetime = val
+      },
     },
     methods:{
       change(){
-        this.showModelSearch = false;
+        this.showLicenceSearch = false;
       },
       getModelSearch(){
+        if(this.onetime === '' && this.twotime === ''){
+          this.$Message.error('请选择时间');
+          this.showLicenceSearch = false;
+        }
+        if(this.twotime < this.onetime){
+          this.$Message.error('选择时间有误，查询结果失败');
+          this.showLicenceSearch = false;
+        }
+        if(this.start != '' && this.end !=''){
+          this.showModelSearch = true;
+        }
         this.$store.dispatch('getSearch',{
           kakouid:this.selectKakouID,//选中的卡口ID
           plateNum:this.chepai,   //车牌
@@ -85,9 +105,6 @@
           end:this.end,           //终止时间
           pagesize:8,             //分页 -> 一页几条
           current:1});            //分页 -> 当前页
-        if(this.start && this.end){
-          this.showModelSearch = true;
-        }
       },
       startALL(){
         let date = moment(this.startDate).format("YYYY-MM-DD");

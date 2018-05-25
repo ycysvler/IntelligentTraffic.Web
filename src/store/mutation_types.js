@@ -14,3 +14,4 @@ export const SET_SEARCH = 'SET_SEARCH'; //查询结果
 
 export const SET_PHOTO = 'SET_PHOTO'; //查询图片
 
+export const SET_DECK = 'SET_DECK'; //查询图片

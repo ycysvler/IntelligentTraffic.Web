@@ -6,6 +6,8 @@ import car_model from '../components/car_model/car_model.vue'
 import car_type from  '../components/car_type/car_type.vue'
 import car_licence from '../components/car_licence/car_licence.vue'
 import car_photo from '../components/car_photo/car_photo.vue'
+import car_deck from '../components/car_deck/car_deck.vue'
+import car_trajectory from '../components/car_trajectory/car_trajectory.vue'
 Vue.use(Router);
 
 export default new Router({
@@ -42,7 +44,18 @@ export default new Router({
           path: '/main/car_photo',
           name: 'car_photo',
           component: car_photo
-        }
+        },
+        {
+          path: '/main/car_deck',
+          name: 'car_deck',
+          component: car_deck
+        },
+        {
+          path: '/main/car_trajectory',
+          name: 'car_trajectory',
+          component: car_trajectory
+        },
+
       ]
     }
   ]

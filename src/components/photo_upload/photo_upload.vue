@@ -12,6 +12,7 @@
       <input id="file1" type="file" @change="showme" accept="image/png,image/gif,image/jpeg"/>
     </div>
     <div class="photoList" v-show="this.photoShow">
+      <div class="photoList_title">请选择一个车型，如不选择，默认查询所有</div>
       <ul>
         <li class="photo" v-for="(items, $index) in this.dataALL">
           <img class="photoSRC groupback" :src="items"  @click = "searchPhoto($index)" :class="{'groupActive': gruopType === $index}"/>
@@ -55,6 +56,8 @@
         endDate:'',
         endTime:'',
         end:'',
+        onetime:'',
+        twotime:'',
         showModelSearch:'',
         getPhoto:[],
         photoDate:'',
@@ -87,6 +90,12 @@
        }
        console.log(this.dataALL)
       },
+      end:function(val, oldVal){
+        this.twotime = val
+      },
+      start:function(val, oldVal){
+        this.onetime = val
+      },
     },
     computed:{
       search(){
@@ -99,6 +108,17 @@
         this.gruopType = $index
       },
       getModelSearch(){
+        if(this.onetime === '' && this.twotime === ''){
+          this.$Message.error('请选择时间');
+          this.showModelSearch = false;
+        }
+        if(this.twotime < this.onetime){
+          this.$Message.error('选择时间有误，查询结果失败');
+          this.showModelSearch = false;
+        }
+        if(this.start != '' && this.end !='' && this.dataALL != ''){
+          this.showModelSearch = true;
+        }
         this.$store.dispatch('getSearch',{
           plateNum:this.cutData.platenumber,    //车牌
           model: this.cutData.vehiclemodel,     //型号
@@ -108,9 +128,6 @@
           end:this.end,                         //终止时间
           pagesize:8,                           //分页 -> 一页几条
           current:1});                          //分页 -> 当前页
-        if(this.start && this.end){
-          this.showModelSearch = true;
-        }
       },
       startALL(){
         let date = moment(this.startDate).format("YYYY-MM-DD");
@@ -186,6 +203,12 @@
         padding-top :10px
     .photoList
       padding: 0 10px 10px 10px
+      .photoList_title
+        padding: 10px
+        color: red
+        font-weight 700
+        width 100%
+        text-align center
     .photoList ul
       width :100%
       height: auto
@@ -231,7 +254,7 @@
           right: 0
           cursor: pointer
           padding :10px
-          color: #2d8cf0
+          color: red
           font-size: 15px
           z-index:10
     .photoTool

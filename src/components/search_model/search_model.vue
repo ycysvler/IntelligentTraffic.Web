@@ -2,7 +2,7 @@
   <transition name = 'fade'>
     <div class="searchmodel_details"  v-show="showModelSearch">
       <div class="searchmodel_title">
-        <span class="searchmodel_over">检索结果</span>
+          <span class="searchmodel_over">检索结果</span>
         <span class="searchmodel_text">共找到<a class="searchmodel_num">{{total}}</a>条结果</span>
         <div @click="hideModeSearch"><Icon class="searchmodel_icon" type="close"></Icon></div>
       </div>

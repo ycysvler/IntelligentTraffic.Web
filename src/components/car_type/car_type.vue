@@ -65,7 +65,7 @@
       </div>
       <Button class="carTypeBtn" type="primary"  @click="getModelSearch">搜索</Button>
     </div>
-    <search_model :items = 'search.data' :total="search.total" :showModelSearch = 'showModelSearch'  @hideshow="change"></search_model>
+    <search_model :items = 'search.data' :total="search.total" :showTypeSearch = 'showTypeSearch'  @hideshow="change"></search_model>
   </div>
 </template>
 
@@ -86,19 +86,19 @@
         endDate:'',
         endTime:'',
         end:'',
+        onetime:'',
+        twotime:'',
         Typevalue: '',
         brandValue:'',
-        showModelSearch:false,
+        showTypeSearch:false,
         selectKakouID:[]
       }
     },
     computed:{
       brands(){
-        console.log('store', this.$store);
         return this.$store.getters.getBrands
       },
       types(){
-        console.log('store', this.$store);
         return this.$store.getters.getTypes
       },
       search(){
@@ -109,7 +109,13 @@
       "$store.getters.getSelectMaps":function (val, oldVal) {
         this.selectKakouID = val;
         console.log("selectKakouID",this.selectKakouID)
-      }
+      },
+      end:function(val, oldVal){
+        this.twotime = val
+      },
+      start:function(val, oldVal){
+        this.onetime = val
+      },
     },
     //页面开始从store获取品牌与类别
     created(){
@@ -118,6 +124,17 @@
     },
     methods:{
       getModelSearch(){
+        if(this.onetime === '' && this.twotime === ''){
+          this.$Message.error('请选择时间');
+          this.showTypeSearch = false;
+        }
+        if(this.twotime < this.onetime){
+          this.$Message.error('选择时间有误，查询结果失败');
+          this.showTypeSearch = false;
+        }
+        if(this.start != '' && this.end !=''){
+          this.showModelSearch = true;
+        }
         this.$store.dispatch('getSearch',{
           kakouid:this.selectKakouID,//选中的卡口ID
           plateNum:this.chepai,   //车牌
@@ -127,9 +144,6 @@
           end:this.end,           //终止时间
           pagesize:8,             //分页 -> 一页几条
           current:1});            //分页 -> 当前页
-        if(this.start && this.end){
-          this.showModelSearch = true;
-        }
       },
       startALL(){
         let date = moment(this.startDate).format("YYYY-MM-DD");

@@ -28,10 +28,15 @@
                 照片检索
               </MenuItem>
               </router-link>
-               <router-link to="/main/car_model">
+               <router-link to="/main/car_deck">
               <MenuItem name="5" style="width: 100px">
-                特征检索
+                套牌分析
               </MenuItem>
+               </router-link>
+                <router-link to="/main/car_trajectory">
+                <MenuItem name="6" style="width: 100px">
+                  轨迹分析
+                </MenuItem>
                </router-link>
             </div>
             <div class="user">
@@ -84,7 +89,7 @@
           display :flex
           line-height: 60px
           position: absolute
-          right: 200px
+          right: 60px
           .username
             color:rgba(153,153,153,1)
             font-size: 14px
