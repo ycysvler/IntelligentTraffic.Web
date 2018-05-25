@@ -64,6 +64,7 @@
       },
     },
     methods:{
+
       getTrajectorySearch(){
         if(!this.chepai){
           this.$Message.error('请输入车牌号');
