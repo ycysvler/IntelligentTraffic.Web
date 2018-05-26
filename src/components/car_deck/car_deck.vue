@@ -15,7 +15,12 @@
               </div>
               <div class="deck_list">
                 <div class="deck_items" v-for="item in item.items">
-                  <img class="deck_img" :src='item.url'/>
+                  <Tooltip placement="left-end">
+                    <img class="deck_img" :src='item.url' />
+                    <div slot="content" class="deck_titlecontent">
+                      <img class="deck_imgtwo" :src='item.url' />
+                    </div>
+                  </Tooltip>
                   <div class="items_content">
                     <div class="items_list">时间：{{itemsData}}</div>
                     <div class="items_list">品牌：<span class="item_data">{{item.vehiclebrand}}</span></div>
@@ -23,7 +28,7 @@
                     <div class="items_list">颜色：<span class="item_data">{{item.vehiclecolor}}</span></div>
                     <div class="items_list">车型：<span class="item_data">{{item.vehiclemodel}}</span></div>
                     <div class="items_list">类别：<span class="item_data">{{item.vehicletype}}</span></div>
-                    <div class="items_list">年款：<span class="item_data">{{item.vehicleyear}}</span></div>
+                    <div class="items_list">年款：<span class="item_data" :title="item.vehicleyear">{{item.vehicleyear}}</span></div>
                   </div>
                 </div>
               </div>
@@ -40,7 +45,7 @@
     data(){
       return{
         itemsData:'',
-        vehicleData:''
+        vehicleData:'',
       }
     },
     computed:{
@@ -108,7 +113,13 @@
         display: flex
         .deck_img
           width: 234px;
-          height: 170px;
+          height: 170px
+        .deck_titlecontent
+          width 450px
+          height:300px
+          .deck_imgtwo
+            width 450px
+            height:300px
         .items_content
           display: flex
           flex-direction column
@@ -117,4 +128,10 @@
             margin-bottom 10px
           .item_data
             color: #2d8cf0
+            max-width :112px
+            display: inline-block
+            overflow: hidden;
+            text-overflow:ellipsis;
+            white-space: nowrap;
+            cursor :pointer
 </style>

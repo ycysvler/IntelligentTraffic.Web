@@ -106,4 +106,6 @@ body {
 .anchorBL{
   display: none;
 }
-
+.ivu-tooltip-inner{
+  max-width: 480px;
+}
