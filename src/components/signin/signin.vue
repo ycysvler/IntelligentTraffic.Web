@@ -51,17 +51,25 @@
       right: 0
       top: 0
       bottom: 0
+      width :100%
     .signin_list
+      width 450px
+      height: 300px
+      background white
       z-index 111
       text-align center
+      border-radius :5px
     .signin_title
       font-size: 30px
       font-weight 700
+      display: inline-block
+      margin-top 20px
     .signin
       margin-top 50px
       .password
         margin-top 20px
       .signin_bottom
         margin-top 50px
-        width 100%
+        width 63%
+
 </style>
