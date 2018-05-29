@@ -48,7 +48,7 @@ const actions = {
         for (let i in response.data.data) {
           let item = response.data.data[i];
           let date = moment(item.date).format("YYYYMMDD");
-          item.url = "http://1596y81h66.iok.la/intelligent/api/images/data" + "/" + date + "/" + item.name;
+          item.url = "http://1596y81h66.iok.la/intelligent/api/analysis/image" + "/" + date + "/" + item._id;
           item.date = moment(item.date).format("YYYY-MM-DD hh:mm:ss");
         }
       }

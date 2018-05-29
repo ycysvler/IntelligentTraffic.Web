@@ -31,9 +31,14 @@
       </div>
       <div class="modelWrapper">
         <ul class="modelWrap_list" >
-          <li class="model_list" v-for="item in items">
-            <img class="model_img" :src='item.url'/>
-            <div class="model_data">
+          <li class="model_list" v-for="item in items" >
+            <Tooltip placement="left-end">
+              <img class="model_img" :src='item.url'/>
+              <div slot="content" class="model_titlecontent">
+                <img class="model_imgtwo" :src='item.url' />
+              </div>
+            </Tooltip>
+            <div class="model_data" >
               <div class="model_position">位置：<span>{{item.address}}</span></div>
               <div class="model_time">拍摄时间：{{item.date}}</div>
               <div class="model_licence">车牌号：<span>{{item.platenumber}}</span></div>
@@ -51,7 +56,7 @@
 </template>
 
 <script type="text/ecmascript-6">
-
+  import moment from 'moment'
   export default {
     props: {
       items: {
@@ -111,8 +116,8 @@
     position:absolute
     top: 25px
     left: 445px
-    width :1020px
-    height: 737px
+    width :70%
+    height: 83.4%
     background: white
     color: rgb(7,17,27)
     font-size: 14px
@@ -217,8 +222,14 @@
           width :234px
           height: 280px
           .model_img
-            width :234px
-            height:170px
+            width: 234px;
+            height: 170px
+          .model_titlecontent
+            width 400px
+            height:300px
+            .model_imgtwo
+              width 400px
+              height:300px
           .model_data
             padding-left: 10px
             div

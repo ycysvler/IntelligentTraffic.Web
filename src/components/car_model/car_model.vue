@@ -104,7 +104,7 @@
         modelValue:'',
         yearValue:'',
         showModelSearch:false,
-        selectKakouID:[]
+        selectKakouID:[],
       }
     },
     //从vuex中action里拿到数据
@@ -119,7 +119,6 @@
         return this.$store.getters.getYears
       },
       search(){
-
         return this.$store.getters.getSearch
       },
     },

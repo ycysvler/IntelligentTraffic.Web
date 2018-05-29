@@ -27,7 +27,7 @@ const actions = {
           for(let i in data.items){
             let item = data.items[i];
             let date = moment(item.date).format("YYYYMMDD");
-            item.url = "http://1596y81h66.iok.la/intelligent/api/images/data" + "/" + date + "/" + item.name;
+            item.url = "http://1596y81h66.iok.la/intelligent/api/analysis/image" + "/" + date + "/" + item._id;
           }
         }
       }

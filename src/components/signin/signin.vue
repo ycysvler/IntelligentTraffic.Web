@@ -6,13 +6,15 @@
       <div class="signin">
         <div>
           <span>账号：</span>
-          <Input v-model="admin" placeholder="请输入账号" clearable style="width: 250px;" />
+          <Input  v-model="admin" placeholder="请输入账号" clearable style="width: 250px;" />
         </div>
         <div class="password">
           <span>密码：</span>
           <Input v-model="password" placeholder="请输入密码" clearable style="width:250px;" type="password" />
         </div>
         <Button class="signin_bottom" type="primary" @click = "signin">搜索</Button>
+        <div class="mima">忘记密码</div>
+        <div class="tishi" style="font-weight: 700;font-size: 14px;">温馨提示：<div style="margin-top: 8px;">登录账号由系统管理员统一分配，申请账号请联系系统管理员。</div></div>
       </div>
     </div>
   </div>
@@ -31,7 +33,7 @@
         if(this.admin === 'admin' && this.password === "admin"){
           this.$router.push({path:'/main'});
         }
-      }
+      },
     }
   }
 </script>
@@ -54,22 +56,34 @@
       width :100%
     .signin_list
       width 450px
-      height: 300px
-      background white
+      height: 380px
+      background: rgba(255,255,255,0.5)
       z-index 111
       text-align center
       border-radius :5px
     .signin_title
-      font-size: 30px
+      font-size: 25px
       font-weight 700
       display: inline-block
-      margin-top 20px
+      margin-top 30px
     .signin
-      margin-top 50px
+      margin-top 40px
       .password
         margin-top 20px
+      .mima
+        width: 80%
+        text-align: end
+        color: #2d8cf0
+        margin-top: 20px
+        cursor: pointer
       .signin_bottom
-        margin-top 50px
+        margin-top 20px
         width 63%
-
+      .tishi
+        text-align start
+        margin-top 15px
+        padding 15px 0
+        border-top: 1px solid rgba(213,213,213,0.5)
+        width 60%
+        margin-left 20%
 </style>
