@@ -225,11 +225,11 @@
             width: 234px;
             height: 170px
           .model_titlecontent
-            width 400px
+            width 900px
             height:300px
             .model_imgtwo
-              width 400px
-              height:300px
+              width 900px
+              height:650px
           .model_data
             padding-left: 10px
             div

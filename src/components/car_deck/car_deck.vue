@@ -115,11 +115,11 @@
           width: 234px;
           height: 170px
         .deck_titlecontent
-          width 450px
-          height:300px
+          width 900px
+          height:650px
           .deck_imgtwo
-            width 450px
-            height:300px
+            width 900px
+            height:650px
         .items_content
           display: flex
           flex-direction column

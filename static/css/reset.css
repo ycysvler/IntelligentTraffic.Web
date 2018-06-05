@@ -107,5 +107,6 @@ body {
   display: none;
 }
 .ivu-tooltip-inner{
-  max-width: 480px;
+  max-width: 930px;
+  height:670px;
 }
