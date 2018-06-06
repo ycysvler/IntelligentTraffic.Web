@@ -62,10 +62,11 @@
           //画矩形的时候
           if(e.drawingMode === BMAP_DRAWING_RECTANGLE){
             let olRectPoint = e.overlay.Ou;
-            let leftTopLng = olRectPoint.Nl.lng;                        //左上经度
-            let leftTopLat = olRectPoint.Nl.lat;                        //左上纬度
-            let rightBottomLng = olRectPoint.wl.lng;                    //右上经度
-            let rightBottomLat = olRectPoint.wl.lat;                    //右上纬度
+            console.log(olRectPoint);
+            let leftTopLng = olRectPoint.Ol.lng;                        //左上经度
+            let leftTopLat = olRectPoint.Ol.lat;                        //左上纬度
+            let rightBottomLng = olRectPoint.xl.lng;                    //右上经度
+            let rightBottomLat = olRectPoint.xl.lat;                    //右上纬度
             let pStart = new BMap.Point(leftTopLng,leftTopLat);
             let pEnd = new BMap.Point(rightBottomLng,rightBottomLat);
             let bs = new BMap.Bounds(pStart,pEnd);                      //边框范围
