@@ -51,7 +51,7 @@
         var mapPiont = [];
 
         window.bdmap = map;
-        map.centerAndZoom(new BMap.Point(116.417854, 39.921988), 13);
+        map.centerAndZoom(new BMap.Point(125.313642427, 43.8983376071), 11);
         map.setCurrentCity("北京");
         map.enableScrollWheelZoom(true);
 

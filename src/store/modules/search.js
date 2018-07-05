@@ -1,7 +1,7 @@
 import axios from 'axios'
 import moment from 'moment'
 import * as types from '../mutation_types'
-axios.defaults.baseURL = 'http://1596y81h66.iok.la/intelligent';  //前缀接口
+axios.defaults.baseURL = 'http://192.168.31.34:7100';  //前缀接口
 
 const state = {
   param: {},
@@ -48,7 +48,7 @@ const actions = {
         for (let i in response.data.data) {
           let item = response.data.data[i];
           let date = moment(item.date).format("YYYYMMDD");
-          item.url = "http://1596y81h66.iok.la/intelligent/api/analysis/image" + "/" + date + "/" + item._id;
+          item.url = "http://192.168.31.34:7100/api/analysis/image" + "/" + date + "/" + item._id;
           item.date = moment(item.date).format("YYYY-MM-DD hh:mm:ss");
         }
       }

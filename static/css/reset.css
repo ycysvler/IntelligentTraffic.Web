@@ -110,3 +110,9 @@ body {
   max-width: 930px;
   height:670px;
 }
+.ivu-menu-dark{
+  background: none ;
+}
+.ivu-layout-header{
+  padding:0;
+}

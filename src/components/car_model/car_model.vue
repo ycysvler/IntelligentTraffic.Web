@@ -179,7 +179,7 @@
           year:this.yearValue,    //年款
           begin:this.start,       //起始时间
           end:this.end,           //终止时间
-          pagesize:8,             //分页 -> 一页几条
+          pagesize:10,             //分页 -> 一页几条
           current:1});            //分页 -> 当前页
       },
       //控制input，disabled

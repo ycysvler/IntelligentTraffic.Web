@@ -1,6 +1,6 @@
 import axios from 'axios'
 import * as types from '../mutation_types'
-axios.defaults.baseURL = 'http://1596y81h66.iok.la/intelligent';  //前缀接口
+axios.defaults.baseURL = 'http://192.168.31.34:7100';  //前缀接口
 
 const state = {
   brands:[],

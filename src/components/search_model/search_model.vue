@@ -9,7 +9,7 @@
       <div class="searchmodel_type">
         <span v-if="getParam.vehiclebrand">品牌：{{getParam.vehiclebrand}}</span>
         <span v-else>品牌：全部</span>
-        <span v-if="getParam.platetype">类别：{{getParam.platetype}}</span>
+        <span v-if="getParam.vehicletype">类别：{{getParam.vehicletype}}</span>
         <span v-else>类别：全部</span>
         <span v-if="getParam.vehiclemodel">型号：{{getParam.vehiclemodel}}</span>
         <span v-else>型号：全部</span>
@@ -42,7 +42,9 @@
               <div class="model_position">位置：<span>{{item.address}}</span></div>
               <div class="model_time">拍摄时间：{{item.date}}</div>
               <div class="model_licence">车牌号：<span>{{item.platenumber}}</span></div>
-              <div class="model_car">识别车型：<span>{{item.vehiclebrand}}{{item.vehicleyear}}</span></div>
+              <div class="model_car">识别车型：<span>{{item.vehiclebrand}}-{{item.vehiclemodel}}</span></div>
+              <div class="model_licence">年款：<span>{{item.vehicleyear}}</span></div>
+              <div class="model_licence">分类：<span>{{item.vehiclecarclass}}/{{item.vehicletype}}</span></div>
               <div class="model_menu">
                 <div class="model_information">查看关联信息</div>
                 <div class="model_control">布控</div>
@@ -88,7 +90,7 @@
           year:this.getParam.vehicleyear,       //年款
           begin:this.getParam.begin,            //起始时间
           end:this.getParam.end,                //终止时间
-          pagesize:8,                            //分页 -> 一页几条
+          pagesize:10,                            //分页 -> 一页几条
           current:current};                      //分页 -> 当前页
         this.$store.dispatch('getSearch',para1);
       },
@@ -117,7 +119,7 @@
     top: 25px
     left: 445px
     width :70%
-    height: 83.4%
+    height: 86%
     background: white
     color: rgb(7,17,27)
     font-size: 14px
@@ -210,7 +212,8 @@
     .modelWrapper
       background: rgba(213,213,213,0.3)
       width 100%
-      height: 615px
+      height: 635px
+      overflow-x: scroll
       .modelWrap_list
         width: 100%
         height: 100%
@@ -220,7 +223,7 @@
           margin: 10px 10px
           background: white
           width :234px
-          height: 280px
+          height: 320px
           .model_img
             width: 234px;
             height: 170px
@@ -242,10 +245,7 @@
             text-overflow:ellipsis;
             white-space: nowrap;
           .model_car
-            width 100%
-            overflow: hidden;
-            text-overflow:ellipsis;
-            white-space: nowrap;
+            display: flex
           .model_menu
             display: flex
             .model_control
