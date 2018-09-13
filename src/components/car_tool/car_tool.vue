@@ -66,22 +66,28 @@
     },
     methods:{
       Hand(){
+        this.$Message.error('内网版本，暂不支持');
         this.textType = '1';
         window.drawingManager.close();
+
       },
       CIRCLE(){
+        this.$Message.error('内网版本，暂不支持');
         this.textType = '2';
         window.drawingManager.open();
         window.drawingManager.setDrawingMode(BMAP_DRAWING_CIRCLE);
         clearAll();
         this.checkAllGroup = [];
+
       },
       RECTANGLE(){
+        this.$Message.error('内网版本，暂不支持');
         this.textType = '3';
         window.drawingManager.open();
         window.drawingManager.setDrawingMode(BMAP_DRAWING_RECTANGLE);
         clearAll();
         this.checkAllGroup = [];
+
       },
       SELECTION(){
         this.textType = '4';
@@ -89,6 +95,7 @@
         window.drawingManager.close();
       },
       CLEAR(){
+        this.$Message.error('内网版本，暂不支持');
         this.textType = '5';
         clearAll();
         this.checkAllGroup = [];

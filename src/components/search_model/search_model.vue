@@ -119,7 +119,6 @@
     top: 25px
     left: 445px
     width :70%
-    height: 86%
     background: white
     color: rgb(7,17,27)
     font-size: 14px
