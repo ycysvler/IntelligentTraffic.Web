@@ -38,7 +38,9 @@
         modal:false,
         indeterminate: false,
         checkAll: false,
-        checkAllGroup: []
+        checkAllGroup: [],
+        kakou: [],
+        mapLng:[]
       }
     },
     created(){
@@ -50,6 +52,7 @@
     },
     computed:{
       kakous(){
+        this.kakou = this.$store.getters.getMaps
         return this.$store.getters.getMaps
       },
       kakouids(){
@@ -72,7 +75,6 @@
         window.drawingManager.setDrawingMode(BMAP_DRAWING_CIRCLE);
         clearAll();
         this.checkAllGroup = [];
-
       },
       RECTANGLE(){
         this.textType = '3';
@@ -92,7 +94,25 @@
         this.checkAllGroup = [];
       },
       asyncOK(){
-        alert("post数据")
+
+        /*for (let i = 0; i < this.mapLng.length; i++) {
+          let mapLng = this.mapLng[i];
+          if(mapLng){
+            let myIcon = new BMap.Icon("../../../static/images/timg.jpg", new BMap.Size(400, 400)); //换图标
+            let marker2 = new BMap.Marker(new BMap.Point(mapLng.lng,mapLng.lat), {icon: myIcon}); // 创建标注
+            window.bdmap.addOverlay(marker2);   // 将标注添加到地图中
+          }else{
+              for(let j = 0;j<this.kakou.length;j++){
+                let kakous = this.kakou[i];
+                let marker = new BMap.Marker(new BMap.Point(kakous.lng,kakous.lat));
+                window.bdmap.addOverlay(marker);   // 将标注添加到地图中
+              }
+          }
+
+        }*/
+
+
+        console.log(this.mapLng)
       },
       handleCheckAll () {
         console.log('handleCheckAll');
@@ -112,6 +132,19 @@
         }
       },
       checkAllGroupChange (data) {
+        //拿到选中的坐标
+        for(let i = 0; i<data.length; i++){
+          for(let j = 0; j<this.kakou.length; j++){
+            let dateAll = this.kakou[j];
+            if(data[i] === dateAll.kakouid){
+              var zuobiao = {}
+              zuobiao.lng = dateAll.lng
+              zuobiao.lat = dateAll.lat
+            }
+          }
+        }
+        //push到数组中
+        this.mapLng.push(zuobiao);
         if (data.length === 3) {
           this.indeterminate = false;
           this.checkAll = true;

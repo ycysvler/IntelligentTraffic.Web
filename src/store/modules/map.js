@@ -1,6 +1,6 @@
 import axios from 'axios'
 import * as types from '../mutation_types'
-axios.defaults.baseURL = 'http://192.168.1.104:7100';  //前缀接口
+
 
 const state = {
   maps:[],
@@ -12,7 +12,6 @@ const mutations = {
     state.maps = items
   },
   [types.SET_SELECTPOINTS](state,items){
-    console.log('types.SET_SELECTPOINTS',items);
     state.SelectMaps = items
   }
 };

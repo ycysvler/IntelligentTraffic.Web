@@ -1,9 +1,7 @@
 import axios from 'axios'
 import * as types from '../mutation_types'
 import moment from 'moment'
-/*axios.defaults.baseURL = 'http://1596y81h66.iok.la/intelligent';  //前缀接口*/
 
-axios.defaults.baseURL = 'http://192.168.1.104:7100';  //前缀接口
 
 
 const state = {

@@ -12,7 +12,7 @@ Vue.prototype.$axios = axios;
 
 Vue.use(iView);
 Vue.config.productionTip = false;
-
+axios.defaults.baseURL = 'http://192.168.1.104:7100';  //前缀接口
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

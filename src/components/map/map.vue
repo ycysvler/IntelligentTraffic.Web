@@ -5,7 +5,7 @@
 </template>
 
 <script type="text/ecmascript-6">
-  import BMap from 'BMap'
+ /* import BMap from 'BMap'*/
 
   export default {
     // 这是声明v-model
@@ -51,10 +51,21 @@
         var mapPiont = [];
 
         window.bdmap = map;
-        map.centerAndZoom(new BMap.Point(125.313642427, 43.8983376071), 11);
-        map.setCurrentCity("北京");
-        map.enableScrollWheelZoom(true);
+       /* map.centerAndZoom(new BMap.Point(125.313642427, 43.8983376071), 11);
+        map.setCurrentCity("长春");
+        map.enableScrollWheelZoom(true);  //开启鼠标滚轮缩放
+        map.addControl(new BMap.NavigationControl());*/
 
+        map.centerAndZoom(new BMap.Point(125.313642427, 43.8983376071), 13);	//初始化地图,设置中心点坐标和地图级别
+        map.enableScrollWheelZoom(true);						//开启鼠标滚轮缩放
+        map.addControl(new BMap.NavigationControl());			//缩放按钮
+
+
+
+       /* //单击获取点击的经纬度
+        map.addEventListener("click",function(e){
+          alert(e.point.lng + "," + e.point.lat);
+        });
         var overlays = [];
         var overlaycomplete = function (e) {
 
@@ -158,7 +169,7 @@
               //调整到最佳视野
             }, 1000);
           });
-        };
+        };*/
         // 请求卡口数据
         this.$store.dispatch('getKakous');
       }
