@@ -8,6 +8,21 @@ import car_licence from '../components/car_licence/car_licence.vue'
 import car_photo from '../components/car_photo/car_photo.vue'
 import car_deck from '../components/car_deck/car_deck.vue'
 import car_trajectory from '../components/car_trajectory/car_trajectory.vue'
+import car_features from '../components/car_features/car_features.vue'
+import car_firstCity from '../components/car_firstCity/car_firstCity.vue'
+import car_foothold from '../components/car_foothold/car_foothold.vue'
+import car_concealment from '../components/car_concealment/car_concealment.vue'
+import car_similar from '../components/car_similar/car_similar.vue'
+import car_multicard from '../components/car_multicard/car_multicard.vue'
+import car_frequenttraffic from '../components/car_frequenttraffic/car_frequenttraffic.vue'
+import car_occlusion from '../components/car_occlusion/car_occlusion.vue'
+import car_vehicle from '../components/car_vehicle/car_vehicle.vue'
+import control_stability from '../components/control_stability/control_stability.vue'
+import control_plate from '../components/control_plate/control_plate.vue'
+import control_vague from '../components/control_vague/control_vague.vue'
+import control_model from '../components/control_model/control_model.vue'
+import control_type from '../components/control_type/control_type.vue'
+
 Vue.use(Router);
 
 export default new Router({
@@ -54,6 +69,76 @@ export default new Router({
           path: '/main/car_trajectory',
           name: 'car_trajectory',
           component: car_trajectory
+        },
+        {
+          path: '/main/car_features',
+          name: 'car_features',
+          component: car_features
+        },
+        {
+          path: '/main/car_firstCity',
+          name: 'car_firstCity',
+          component: car_firstCity
+        },
+        {
+          path: '/main/car_foothold',
+          name: 'car_foothold',
+          component: car_foothold
+        },
+        {
+          path: '/main/car_concealment',
+          name: 'car_concealment',
+          component: car_concealment
+        },
+        {
+          path: '/main/car_similar',
+          name: 'car_similar',
+          component: car_similar
+        },
+        {
+          path: '/main/car_multicard',
+          name: 'car_multicard',
+          component: car_multicard
+        },
+        {
+          path: '/main/car_frequenttraffic',
+          name: 'car_frequenttraffic',
+          component: car_frequenttraffic
+        },
+        {
+          path: '/main/car_occlusion',
+          name: 'car_occlusion',
+          component: car_occlusion
+        },
+        {
+          path: '/main/car_vehicle',
+          name: 'car_vehicle',
+          component: car_vehicle
+        },
+        {
+          path: '/main/control_stability',
+          name: 'control_stability',
+          component: control_stability
+        },
+        {
+          path: '/main/control_plate',
+          name: 'control_plate',
+          component: control_plate
+        },
+        {
+          path: '/main/control_vague',
+          name: 'control_vague',
+          component: control_vague
+        },
+        {
+          path: '/main/control_model',
+          name: 'control_model',
+          component: control_model
+        },
+        {
+          path: '/main/control_type',
+          name: 'control_type',
+          component: control_type
         },
 
       ]

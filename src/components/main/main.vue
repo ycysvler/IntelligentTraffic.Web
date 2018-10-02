@@ -8,36 +8,122 @@
               高速公路交通信用大数据平台
             </div>
             <div class="layout-nav">
-              <router-link to="/main/car_model">
-                <MenuItem name="1" style="width: 100px">
-                  车型检索
-                </MenuItem>
-              </router-link>
-              <router-link to="/main/car_type">
-                <MenuItem name="2" style="width: 100px">
-                  类别检索
-                </MenuItem>
-              </router-link>
-              <router-link to="/main/car_licence">
-              <MenuItem name="3" style="width: 100px">
-                车牌检索
-              </MenuItem>
-              </router-link>
-              <router-link to="/main/car_photo">
-              <MenuItem name="4" style="width: 100px">
-                照片检索
-              </MenuItem>
-              </router-link>
-               <router-link to="/main/car_deck">
-              <MenuItem name="5" style="width: 100px">
-                套牌分析
-              </MenuItem>
-               </router-link>
+              <Submenu name="1">
+                <template slot="title">
+                  数据检索
+                </template>
+                <router-link to="/main/car_model">
+                  <MenuItem name="1-1" >
+                    车型检索
+                  </MenuItem>
+                </router-link>
+                <router-link to="/main/car_type">
+                  <MenuItem name="1-2" >
+                    类别检索
+                  </MenuItem>
+                </router-link>
+                <router-link to="/main/car_licence">
+                  <MenuItem name="1-3" >
+                    车牌检索
+                  </MenuItem>
+                </router-link>
+                <router-link to="/main/car_photo">
+                  <MenuItem name="1-4" >
+                    照片检索
+                  </MenuItem>
+                </router-link>
+                <router-link :to="{path:'/main/car_features',query: {type: 'car_features'}}">
+                  <MenuItem name="1-5" >
+                    特征检索
+                  </MenuItem>
+                </router-link>
+              </Submenu>
+              <Submenu name="2">
+                <template slot="title">
+                  大数据分析
+                </template>
+                <router-link to="/main/car_deck">
+                  <MenuItem name="2-1">
+                    套牌分析
+                  </MenuItem>
+                </router-link>
                 <router-link to="/main/car_trajectory">
-                <MenuItem name="6" style="width: 100px">
-                  轨迹分析
-                </MenuItem>
-               </router-link>
+                  <MenuItem name="2-2">
+                    轨迹分析
+                  </MenuItem>
+                </router-link>
+                <router-link to="/main/car_firstCity">
+                  <MenuItem name="2-3">
+                    初次入城
+                  </MenuItem>
+                </router-link>
+                <router-link to="/main/car_foothold">
+                  <MenuItem name="2-4">
+                    落脚点分析
+                  </MenuItem>
+                </router-link>
+                <router-link to="/main/car_concealment">
+                  <MenuItem name="2-5">
+                    隐匿车辆挖掘
+                  </MenuItem>
+                </router-link>
+                <router-link to="/main/car_similar">
+                  <MenuItem name="2-6">
+                    相似车牌串并
+                  </MenuItem>
+                </router-link>
+                <router-link to="/main/car_multicard">
+                  <MenuItem name="2-7">
+                    一车多牌
+                  </MenuItem>
+                </router-link>
+                <router-link to="/main/car_frequenttraffic">
+                  <MenuItem name="2-8">
+                    频繁过车
+                  </MenuItem>
+                </router-link>
+                <router-link to="/main/car_occlusion">
+                  <MenuItem name="2-9">
+                    遮挡面部识别
+                  </MenuItem>
+                </router-link>
+                <router-link to="/main/car_vehicle">
+                  <MenuItem name="2-10">
+                    同行车辆
+                  </MenuItem>
+                </router-link>
+              </Submenu>
+              <Submenu name="3">
+                <template slot="title">
+                  布控统计
+                </template>
+                <router-link to="/main/control_stability">
+                  <MenuItem name="3-1">
+                    维稳布控
+                  </MenuItem>
+                </router-link>
+                <router-link to="/main/control_plate">
+                  <MenuItem name="3-2">
+                    车牌精准布控
+                  </MenuItem>
+                </router-link>
+                <router-link to="/main/control_vague">
+                  <MenuItem name="3-3">
+                    车牌模糊布控
+                  </MenuItem>
+                </router-link>
+                <router-link to="/main/control_model">
+                  <MenuItem name="3-4">
+                    车型布控
+                  </MenuItem>
+                </router-link>
+                <router-link to="/main/control_type">
+                  <MenuItem name="3-5">
+                    类别布控
+                  </MenuItem>
+                </router-link>
+
+              </Submenu>
             </div>
             <div class="user">
               <div class="demo-avatar">
@@ -68,6 +154,10 @@
 
 <style scoped lang="stylus" rel="stylesheet/stylus">
   #main
+    .ivu-menu-light
+      background none
+    .ivu-layout-content
+      z-index -1
     .layout
       border: 1px solid #d7dde4;
       background: #f5f7f9;
@@ -90,8 +180,9 @@
             padding 0 0 0 100px
           .layout-nav
             display :flex
-            width: 420px;
             margin-left :385px
+            .ivu-menu-item
+              text-align center
           .user
             display :flex
             line-height: 60px

@@ -2,11 +2,11 @@
   <div class="carTool">
     <span class="carTooltext">选择拍摄位置（默认为全部区域）</span>
     <div class="carToolList">
-      <div class="toolColor" :class="{'active': textType === '1'}" @click="Hand"><Icon class="caricon" type="android-hand"></Icon></div>
-      <div class="toolColor" :class="{'active': textType === '2'}" @click="CIRCLE"><Icon class="caricon" type="android-radio-button-off" ></Icon></div>
-      <div class="toolColor" :class="{'active': textType === '3'}"  @click="RECTANGLE"><Icon class="caricon" type="android-checkbox-outline-blank"></Icon></div>
-      <div class="toolColor" :class="{'active': textType === '4'}"  @click="SELECTION"><Icon class="caricon" type="ios-list"></Icon></div>
-      <div class="toolColor" :class="{'active': textType === '5'}"  @click="CLEAR"><Icon class="caricon" type="trash-a"></Icon></div>
+      <div class="toolColor" :class="{'active': textType === '1'}" @click="Hand"><Icon class="caricon" type="md-hand"></Icon></div>
+      <div class="toolColor" :class="{'active': textType === '2'}" @click="CIRCLE"><Icon class="caricon" type="md-radio-button-off"></Icon></div>
+      <div class="toolColor" :class="{'active': textType === '3'}"  @click="RECTANGLE"><Icon class="caricon" type="md-square-outline"></Icon></div>
+      <div class="toolColor" :class="{'active': textType === '4'}"  @click="SELECTION"><Icon class="caricon" type="ios-list-box"></Icon></div>
+      <div class="toolColor" :class="{'active': textType === '5'}"  @click="CLEAR"><Icon class="caricon" type="md-trash"></Icon></div>
     </div>
     <Modal
       v-model="modal"
@@ -59,8 +59,7 @@
         let ids = [];
         this.$store.getters.getMaps.forEach((item)=>{
           ids.push(item.kakouid);
-          console.log(aaaaaaaaaa,'ids')
-        });
+               });
         return ids;
       }
     },
@@ -68,61 +67,60 @@
       Hand(){
         this.$Message.error('内网版本，暂不支持');
         this.textType = '1';
-        window.drawingManager.close();
+        /*window.drawingManager.close();*/
 
       },
       CIRCLE(){
         this.$Message.error('内网版本，暂不支持');
         this.textType = '2';
-        window.drawingManager.open();
+     /*   window.drawingManager.open();
         window.drawingManager.setDrawingMode(BMAP_DRAWING_CIRCLE);
         clearAll();
-        this.checkAllGroup = [];
+        this.checkAllGroup = [];*/
 
       },
       RECTANGLE(){
         this.$Message.error('内网版本，暂不支持');
         this.textType = '3';
-        window.drawingManager.open();
+    /*    window.drawingManager.open();
         window.drawingManager.setDrawingMode(BMAP_DRAWING_RECTANGLE);
         clearAll();
-        this.checkAllGroup = [];
+        this.checkAllGroup = [];*/
 
       },
       SELECTION(){
         this.textType = '4';
         this.modal = true;
-        window.drawingManager.close();
+      /*  window.drawingManager.close();*/
       },
       CLEAR(){
         this.$Message.error('内网版本，暂不支持');
         this.textType = '5';
-        clearAll();
-        this.checkAllGroup = [];
+       /* clearAll();
+        this.checkAllGroup = [];*/
       },
       asyncOK(){
-
-        /*for (let i = 0; i < this.mapLng.length; i++) {
-          let mapLng = this.mapLng[i];
-          if(mapLng){
-            let myIcon = new BMap.Icon("../../../static/images/timg.jpg", new BMap.Size(400, 400)); //换图标
-            let marker2 = new BMap.Marker(new BMap.Point(mapLng.lng,mapLng.lat), {icon: myIcon}); // 创建标注
+      /*  var marker2;
+        if(this.mapLng.length != 0){
+          for (let i = 0; i < this.mapLng.length; i++) {
+            let mapLng = this.mapLng[i];
+            let myIcon = new BMap.Icon("../../../static/images/timg.jpg", new BMap.Size(24, 25),{anchor: new BMap.Size(13, 25)}); //换图标
+            myIcon.setImageSize(new BMap.Size(23, 30)); //控制图标大小
+            marker2 = new BMap.Marker(new BMap.Point(mapLng.lng,mapLng.lat), {icon: myIcon}); // 创建标注
             window.bdmap.addOverlay(marker2);   // 将标注添加到地图中
-          }else{
+            console.log(marker2.Zc)
+          }
+        }
+       else{
+
               for(let j = 0;j<this.kakou.length;j++){
-                let kakous = this.kakou[i];
+                let kakous = this.kakou[j];
                 let marker = new BMap.Marker(new BMap.Point(kakous.lng,kakous.lat));
                 window.bdmap.addOverlay(marker);   // 将标注添加到地图中
               }
-          }
-
         }*/
-
-
-        console.log(this.mapLng)
       },
       handleCheckAll () {
-        console.log('handleCheckAll');
         if (this.indeterminate) {
           this.checkAll = false;
         } else {
@@ -139,19 +137,23 @@
         }
       },
       checkAllGroupChange (data) {
+        this.mapLng = [];
         //拿到选中的坐标
         for(let i = 0; i<data.length; i++){
           for(let j = 0; j<this.kakou.length; j++){
             let dateAll = this.kakou[j];
             if(data[i] === dateAll.kakouid){
-              var zuobiao = {}
-              zuobiao.lng = dateAll.lng
-              zuobiao.lat = dateAll.lat
+              var zuobiao = {};
+              zuobiao.lng = dateAll.lng;
+              zuobiao.lat = dateAll.lat;
+              //push到数组中
+              this.mapLng.push(zuobiao);
+              console.log('this.mapLng',this.mapLng)
             }
           }
+
         }
-        //push到数组中
-        this.mapLng.push(zuobiao);
+
         if (data.length === 3) {
           this.indeterminate = false;
           this.checkAll = true;
