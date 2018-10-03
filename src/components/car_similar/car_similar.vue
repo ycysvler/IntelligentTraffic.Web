@@ -48,7 +48,7 @@
         </RadioGroup>
         <div style="display: flex;margin-bottom: 10px">
           <span style="line-height: 32px;margin-right: 5px">车牌相差</span>
-          <Input style="width: 55%" v-model="similarPlateNum" />
+          <Input style="width: 55%" v-model="similarPlateNum" placeholder="请输入车牌相差位数"/>
           <span style="line-height: 32px;margin-left: 5px">位</span>
         </div>
         <Row>

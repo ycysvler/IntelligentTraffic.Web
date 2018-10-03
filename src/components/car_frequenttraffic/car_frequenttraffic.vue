@@ -63,7 +63,7 @@
         </Row>
         <div style="display: flex">
           <span style="line-height: 32px;margin-right: 5px">过车次数超过</span>
-          <Input style="width: 45%" v-model="trafficNum" />
+          <Input style="width: 45%" v-model="trafficNum" placeholder="请输入次数"/>
           <span style="line-height: 32px;margin-left: 5px">次</span>
         </div>
       </div>

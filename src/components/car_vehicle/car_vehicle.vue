@@ -49,12 +49,12 @@
         </RadioGroup>
         <div style="display: flex">
           <span style="line-height: 32px;margin-right: 5px">跟车时间小于</span>
-          <Input style="width: 47%" v-model="vehicleTime" />
+          <Input style="width: 47%" v-model="vehicleTime" placeholder="请输入跟车时间"/>
           <span style="line-height: 32px;margin-left: 5px">分钟</span>
         </div>
         <div style="display: flex;margin: 10px 0">
           <span style="line-height: 32px;margin-right: 5px">同行路口超过</span>
-          <Input style="width: 47%" v-model="vehicleNum" />
+          <Input style="width: 47%" v-model="vehicleNum" placeholder="请输入同行路口次数"/>
           <span style="line-height: 32px;margin-left: 5px">个</span>
         </div>
         <Row>

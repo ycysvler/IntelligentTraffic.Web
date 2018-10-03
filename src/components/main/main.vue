@@ -122,6 +122,16 @@
                     类别布控
                   </MenuItem>
                 </router-link>
+                <router-link to="/main/control_approval">
+                  <MenuItem name="3-6">
+                    布控审批
+                  </MenuItem>
+                </router-link>
+                <router-link to="/main/control_me">
+                  <MenuItem name="3-7">
+                    我的布控
+                  </MenuItem>
+                </router-link>
 
               </Submenu>
             </div>

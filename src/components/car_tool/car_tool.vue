@@ -100,25 +100,22 @@
         this.checkAllGroup = [];*/
       },
       asyncOK(){
-      /*  var marker2;
-        if(this.mapLng.length != 0){
+        var marker2;
+        console.log(this.mapLng)
+          //每次点击确定的时候 先循环一遍点
+          for(let j = 0;j<this.kakou.length;j++){
+            let kakous = this.kakou[j];
+            let marker = new BMap.Marker(new BMap.Point(kakous.lng,kakous.lat));
+            window.bdmap.addOverlay(marker);   // 将标注添加到地图中
+          }
+          //把选中的点替换成图片
           for (let i = 0; i < this.mapLng.length; i++) {
             let mapLng = this.mapLng[i];
-            let myIcon = new BMap.Icon("../../../static/images/timg.jpg", new BMap.Size(24, 25),{anchor: new BMap.Size(13, 25)}); //换图标
+            let myIcon = new BMap.Icon("../../../static/images/timg.jpg", new BMap.Size(19, 25),{anchor: new BMap.Size(11, 25)}); //换图标
             myIcon.setImageSize(new BMap.Size(23, 30)); //控制图标大小
             marker2 = new BMap.Marker(new BMap.Point(mapLng.lng,mapLng.lat), {icon: myIcon}); // 创建标注
             window.bdmap.addOverlay(marker2);   // 将标注添加到地图中
-            console.log(marker2.Zc)
           }
-        }
-       else{
-
-              for(let j = 0;j<this.kakou.length;j++){
-                let kakous = this.kakou[j];
-                let marker = new BMap.Marker(new BMap.Point(kakous.lng,kakous.lat));
-                window.bdmap.addOverlay(marker);   // 将标注添加到地图中
-              }
-        }*/
       },
       handleCheckAll () {
         if (this.indeterminate) {
@@ -127,31 +124,33 @@
           this.checkAll = !this.checkAll;
         }
         this.indeterminate = false;
-
-        console.log('this.checkAll', this.checkAll);
         if (this.checkAll) {
           this.checkAllGroup = this.kakouids;
           console.log('this.checkAllGroup', this.kakouids);
+          for(let i = 0; i<this.checkAllGroup.length; i++){
+            this.checkAllGroupChange(this.checkAllGroup[i],1)
+          }
         } else {
           this.checkAllGroup = [];
+          this.mapLng = [];
         }
       },
-      checkAllGroupChange (data) {
-        this.mapLng = [];
+      checkAllGroupChange (data,type) {
+        if(!type){
+          this.mapLng = [];
+        }
         //拿到选中的坐标
         for(let i = 0; i<data.length; i++){
           for(let j = 0; j<this.kakou.length; j++){
             let dateAll = this.kakou[j];
             if(data[i] === dateAll.kakouid){
-              var zuobiao = {};
+              let zuobiao = {};
               zuobiao.lng = dateAll.lng;
               zuobiao.lat = dateAll.lat;
               //push到数组中
               this.mapLng.push(zuobiao);
-              console.log('this.mapLng',this.mapLng)
             }
           }
-
         }
 
         if (data.length === 3) {

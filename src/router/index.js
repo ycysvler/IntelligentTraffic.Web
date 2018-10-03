@@ -22,7 +22,8 @@ import control_plate from '../components/control_plate/control_plate.vue'
 import control_vague from '../components/control_vague/control_vague.vue'
 import control_model from '../components/control_model/control_model.vue'
 import control_type from '../components/control_type/control_type.vue'
-
+import control_approval from '../components/control_approval/control_approval.vue'
+import control_me from  '../components/control_me/control_me.vue'
 Vue.use(Router);
 
 export default new Router({
@@ -140,7 +141,16 @@ export default new Router({
           name: 'control_type',
           component: control_type
         },
-
+        {
+          path: '/main/control_approval',
+          name: 'control_approval',
+          component: control_approval
+        },
+        {
+          path: '/main/control_me',
+          name: 'control_me',
+          component: control_me
+        },
       ]
     }
   ]
