@@ -226,7 +226,7 @@
       .featureBtn
         width :50%
         height: 40px
-        margin-left :24%
+        margin-left :12%
         margin-top : 50px
       .ivu-form-item-content
         margin 0

@@ -64,18 +64,18 @@
         <Row>
           <div class="startTime">
             <Col span="12" />
-            <span>界定出行时间</span>
+            <span style="margin-right: 10px">界定出行时间</span>
             <TimePicker confirm placeholder="时,分,秒" style="width: 45%" v-model="definitionStartTime"  ></TimePicker>
           </div>
           <div class="endTime">
             <Col span="12" />
-            <span>界定返回时间</span>
+            <span style="margin-right: 10px">界定返回时间</span>
             <TimePicker confirm placeholder="时,分,秒" style="width: 45%" v-model="definitionEndTime"></TimePicker>
           </div>
         </Row>
         <div style="display: flex">
-          <span style="line-height: 32px;margin-right: 5px">落脚点时长超过</span>
-          <Input style="width: 45%" v-model="footholdHour" />
+          <span style="line-height: 32px;margin-right: 10px">落脚点时长超过</span>
+          <Input style="width: 45%" v-model="footholdHour" placeholder="请输入落脚点时长"/>
           <span style="line-height: 32px;margin-left: 5px">小时</span>
         </div>
       </div>

@@ -66,7 +66,8 @@
     methods:{
 
       getTrajectorySearch(){
-        if(!this.chepai){
+        this.$Message.error('内网版本，暂不支持');
+       /* if(!this.chepai){
           this.$Message.error('请输入车牌号');
         }
         if(this.start === '' && this.end === ''){
@@ -82,7 +83,7 @@
             end:this.end,           //终止时间
           });
         }
-        window.trajectory(this.trajectory_data)
+        window.trajectory(this.trajectory_data)*/
       },
       startALL(){
         let date = moment(this.startDate).format("YYYY-MM-DD");
